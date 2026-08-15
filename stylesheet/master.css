@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+
+@layer base{
+       h1{
+              @apply text-[5vw] flex items-center justify-center w-full lg:w-1/2! text-center font-bold font-[france] text-cream
+
+       }
+
+       @font-face {
+              font-family: inter;
+              src: url(../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+       }
+
+       @font-face {
+              font-family: france;
+              src: url(../fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+       }
+
+     
+}
+
+@layer utilities{
+       .row{
+              @apply flex flex-wrap w-full
+       }
+}
+
+@layer components{
+       #progress{
+              @apply fixed top-0 left-0 h-0.75 w-0 z-100 
+   bg-linear-to-r from-(--amber) to-(--rust) duration-100
+       }
+
+       .stageCounter{
+           @apply fixed top-5 right-5 z-100 text-muted p-2 
+       }
+
+       .bubbles{
+              @apply  border rounded-full backdrop-blur-[60px] fixed pointer-events-none z-0
+              opacity-30 w-32 h-32 
+       }
+
+       #bubble1{
+              @apply  md:w-100 md:h-100 opacity-20 bg-sage -top-2.5 -left-2.5 lg:-top-25 lg:-left-30
+       }
+
+       #bubble2{
+              @apply md:w-75 md:h-75 bg-rust  -bottom-2.5 -right-2.5 lg:-bottom-35 lg:-right-25 
+       }
+
+       .scroll-cue{
+              @apply  absolute bottom-12.5 text-sm text-muted animate-bubbles
+       }
+}
+
+
+
+@theme {
+    --animate-bubbles:bubbles 2s ease-in-out infinite;
+    --color-bg: #1f140f;
+    --color-bg-2: #2b1b12;
+    --color-cream: #f2e8dc;
+    --color-amber: #e8a33d;
+    --color-rust: #b5651d;
+    --color-sage: #7c9473;
+    --color-muted: rgba(242,232,220,0.6);
+
+
+
+
+
+
+    @keyframes bubbles 
+    {
+        0%,100%{transform:translateY(0);} 
+        50%{transform:translateY(8px);}
+     }
+  }
