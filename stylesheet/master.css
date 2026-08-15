@@ -1,79 +1,111 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
+@layer base {
+  h1 {
+    @apply text-[7vw] lg:text-[5vw] flex items-center justify-center w-full lg:w-1/2! text-center font-bold font-[france] text-cream;
+  }
 
-@layer base{
-       h1{
-              @apply text-[5vw] flex items-center justify-center w-full lg:w-1/2! text-center font-bold font-[france] text-cream
+  h2{
 
-       }
+    @apply text-[5vw] lg:text-[4vw] flex items-center justify-center w-full lg:w-1/2! text-center font-bold font-[france] text-cream
+  }
 
-       @font-face {
-              font-family: inter;
-              src: url(../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
-       }
+  @font-face {
+    font-family: inter;
+    src: url(../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+  }
 
-       @font-face {
-              font-family: france;
-              src: url(../fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
-       }
-
-     
+  @font-face {
+    font-family: france;
+    src: url(../fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+  }
 }
 
-@layer utilities{
-       .row{
-              @apply flex flex-wrap w-full
-       }
+@layer utilities {
+  .row {
+    @apply flex flex-wrap w-full;
+  }
 }
 
-@layer components{
-       #progress{
-              @apply fixed top-0 left-0 h-0.75 w-0 z-100 
-   bg-linear-to-r from-(--amber) to-(--rust) duration-100
-       }
+@layer components {
+  #progress {
+    @apply fixed top-0 left-0 h-0.75 w-0 z-100 
+          bg-linear-to-r from-(--amber) to-(--rust) duration-100;
+  }
 
-       .stageCounter{
-           @apply fixed top-5 right-5 z-100 text-muted p-2 
-       }
+  .stageCounter {
+    @apply fixed top-5 right-5 z-100 text-muted p-2;
+  }
 
-       .bubbles{
-              @apply  border rounded-full backdrop-blur-[60px] fixed pointer-events-none z-0
-              opacity-30 w-32 h-32 
-       }
+  .bubbles {
+    @apply rounded-full blur-[60px] fixed pointer-events-none z-0
+              opacity-30 w-32 h-32;
+  }
 
-       #bubble1{
-              @apply  md:w-100 md:h-100 opacity-20 bg-sage -top-2.5 -left-2.5 lg:-top-25 lg:-left-30
-       }
+  #bubble1 {
+    @apply md:w-100 md:h-100 opacity-20 bg-sage -top-2.5 -left-2.5 lg:-top-25 lg:-left-30;
+  }
 
-       #bubble2{
-              @apply md:w-75 md:h-75 bg-rust  -bottom-2.5 -right-2.5 lg:-bottom-35 lg:-right-25 
-       }
+  #bubble2 {
+    @apply md:w-75 md:h-75 bg-rust  -bottom-2.5 -right-2.5 lg:-bottom-35 lg:-right-25;
+  }
 
-       .scroll-cue{
-              @apply  absolute bottom-12.5 text-sm text-muted animate-bubbles
-       }
+  .scroll-cue {
+    @apply absolute bottom-12.5 text-sm text-muted animate-bubbles 
+  }
+
+  .stage {
+    @apply w-full p-10  lg:p-25  border-b-[0.5px] border-amber relative;
+  }
+
+  .stage-bg {
+    @apply w-1/2  flex items-center justify-end absolute top-1/2 -translate-y-1/2;
+  }
+
+  .stage-bg-num {
+    @apply text-[200px] lg:text-[350px] font-[france]  font-bold
+              leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(242,232,220,0.12)] z-0   pointer-events-none will-change-transform
+  }
+
+  .stageMain{
+       @apply opacity-0 -translate-y-50
+  }
+  .stage-num{
+       @apply  text-amber text-sm tracking-[0.2em] flex mb-[16px]
+    }
+
+    .stage-bottom{
+       @apply mt-7 flex gap-8 flex-wrap
+    }
+
+    .item-number{
+       @apply  font-[france] text-lg text-cream flex 
+    }
+
+    .item-lable{
+       @apply text-sm text-cream uppercase leading-4
+
+    }
+
 }
-
-
 
 @theme {
-    --animate-bubbles:bubbles 2s ease-in-out infinite;
-    --color-bg: #1f140f;
-    --color-bg-2: #2b1b12;
-    --color-cream: #f2e8dc;
-    --color-amber: #e8a33d;
-    --color-rust: #b5651d;
-    --color-sage: #7c9473;
-    --color-muted: rgba(242,232,220,0.6);
+  --animate-bubbles: bubbles 2s ease-in-out infinite;
+  --color-bg: #1f140f;
+  --color-bg-2: #2b1b12;
+  --color-cream: #f2e8dc;
+  --color-amber: #e8a33d;
+  --color-rust: #b5651d;
+  --color-sage: #7c9473;
+  --color-muted: rgba(242, 232, 220, 0.6);
 
-
-
-
-
-
-    @keyframes bubbles 
-    {
-        0%,100%{transform:translateY(0);} 
-        50%{transform:translateY(8px);}
-     }
+  @keyframes bubbles {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
   }
+}
