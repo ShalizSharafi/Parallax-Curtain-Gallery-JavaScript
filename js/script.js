@@ -10,7 +10,9 @@ const words = document.querySelectorAll('.words')
 const makeText = document.querySelector('.make-text')
 const wordColors=['#24DBD8','#030807','#312C23','#CBCBCB']
 const navItems = document.querySelectorAll('.navItems')
+const sideText = document.querySelectorAll('.sideText')
 const lineWidths = [0, 20, 40, 60]
+const h1 = document.querySelectorAll('h1')
 // const words = ['very','simple','scroll','snap']
 // const chnagingWordsColors=['#24DBD8','#030807','#312C23','#CBCBCB']
 const line = document.querySelector('.line')
@@ -30,6 +32,7 @@ sections.forEach((sec,i)=>{
 words.forEach((word, i) => {
   word.style.transform = `translateY(${(i - currentIndex) * 100}%)`
 })
+h1.forEach((val,i)=>val.style.transform=`translateY(${(i - currentIndex) * 100}%)`)
 
 addEventListener('wheel',(e)=>{
   //stop the default scroll.
@@ -55,6 +58,7 @@ addEventListener('wheel',(e)=>{
   makeText.style.color=wordColors[currentIndex]
   line.style.backgroundColor=wordColors[currentIndex]
   navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
+  sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
   console.log('currentindex: ',currentIndex)
    startTime = performance.now()
    startY = scrollY
@@ -100,7 +104,6 @@ function animateScroll(){
     // line.style.width= ((currentIndex) * 1/5)*100 + '%'
     sections[fromIndex].style.clipPath=`inset(${fromInset}% 0 0 0)`
   }
-
   if(progress < 1){
     requestAnimationFrame(animateScroll)
   }else{

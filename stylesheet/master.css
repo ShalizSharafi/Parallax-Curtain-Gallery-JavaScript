@@ -15,6 +15,11 @@
               font-family:normalInter ;
               src: url(../fonts/Inter/static/Inter_28pt-Thin.ttf);
        }
+
+       @font-face {
+              font-family:light ;
+              src: url(../fonts/Inter/static/Inter_18pt-Light.ttf);
+       }
        body{
               font-family: inter;
        }
@@ -22,11 +27,18 @@
        .font-normalInter{
               font-family: normalInter;
        }
+
+       .font-lightInter{
+              font-family: light;
+       }
+       h1{
+              @apply text-[10vw] lg:text-[9vw] text-white w-full flex items-center justify-center border border-white h-full 
+       }
 }
 
 @layer components{
        .main-wrapper{
-              @apply relative h-screen overflow-hidden
+              @apply relative h-screen overflow-hidden w-full
        }
        .sec{
               @apply w-full h-screen fixed top-0 left-0
@@ -51,5 +63,12 @@
 
        #changingWord{
               @apply overflow-hidden relative
+       }
+       .sideText{
+              @apply uppercase text-[16px] text-[#24DBD8]  absolute top-1/2 -translate-y-1/2  z-100 rotate-90 duration-900
+       }
+       .row{
+              @apply flex w-4/5 fixed h-50 items-center justify-center border top-1/2 left-1/2
+              -translate-y-1/2  -translate-x-1/2 z-100 overflow-hidden
        }
 }
