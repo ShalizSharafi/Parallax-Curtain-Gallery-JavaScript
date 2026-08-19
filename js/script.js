@@ -59,6 +59,7 @@ addEventListener('wheel',(e)=>{
   line.style.backgroundColor=wordColors[currentIndex]
   navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
   sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
+  h1.forEach((val)=>val.style.color=wordColors[currentIndex])
   console.log('currentindex: ',currentIndex)
    startTime = performance.now()
    startY = scrollY
@@ -81,18 +82,25 @@ function animateScroll(){
   let duration = 900
   let progress = scrolledPassed / duration //how man y seconds we're of the way through the animation
   progress = Math.min(progress,1)
+  //ease progress controls the smpoothness and the gentleness of the animations passing through time
     let easedProgress = easeInOutQuad(progress)
-  // let newY = startY + (endY - startY )* progress //(progress was how far we're inside the animation)
-  // scrollTo(0,newY)
+ 
   let wordOffset = fromIndex + (toIndex - fromIndex) * easedProgress
+  //line 
   let lineWidthStart = lineWidths[fromIndex]
   let lineWidthEnd = lineWidths[toIndex]
   let lineCurrentWidth = lineWidthStart + (lineWidthEnd - lineWidthStart) * easedProgress
   line.style.width=lineCurrentWidth + '%'
+  //line
   words.forEach((word,i)=>{
     let y = (i - wordOffset) * 100
     word.style.transform=`translateY(${y}%)`
       console.log('word', i, word.textContent, 'y:', y.toFixed(1))
+  })
+  /////h1
+  h1.forEach((val,i)=>{
+    let y = (i - wordOffset) * 100
+     val.style.transform=`translateY(${y}%)`
   })
   let fromInset = 100 * easedProgress
   let toInset = 100 - (easedProgress * 100)

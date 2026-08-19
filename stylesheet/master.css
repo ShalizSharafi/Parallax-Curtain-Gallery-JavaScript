@@ -20,6 +20,7 @@
               font-family:light ;
               src: url(../fonts/Inter/static/Inter_18pt-Light.ttf);
        }
+       
        body{
               font-family: inter;
        }
@@ -31,8 +32,9 @@
        .font-lightInter{
               font-family: light;
        }
+       
        h1{
-              @apply text-[10vw] lg:text-[9vw] text-white w-full flex items-center justify-center border border-white h-full 
+              @apply text-[10vw] lg:text-[9vw] text-white w-full flex items-center justify-center   h-full absolute top-0 left-0 uppercase font-bold
        }
 }
 
@@ -68,7 +70,8 @@
               @apply uppercase text-[16px] text-[#24DBD8]  absolute top-1/2 -translate-y-1/2  z-100 rotate-90 duration-900
        }
        .row{
-              @apply flex w-4/5 fixed h-50 items-center justify-center border top-1/2 left-1/2
+              @apply flex w-25 lg:w-150 fixed h-50 items-center justify-center  top-1/2 left-1/2
               -translate-y-1/2  -translate-x-1/2 z-100 overflow-hidden
        }
+      
 }
