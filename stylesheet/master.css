@@ -46,7 +46,7 @@
        }
 
        .line{
-              @apply w-0 h-px bg-white absolute z-100 rounded-2xl bottom-25 -translate-x-1/2 left-1/2
+              @apply w-0 h-[1.2px] bg-white absolute z-100 rounded-2xl bottom-25 -translate-x-1/2 left-1/2
        }
 
        #changingWord{

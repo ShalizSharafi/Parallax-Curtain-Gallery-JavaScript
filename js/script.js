@@ -10,9 +10,10 @@ const words = document.querySelectorAll('.words')
 const makeText = document.querySelector('.make-text')
 const wordColors=['#24DBD8','#030807','#312C23','#CBCBCB']
 const navItems = document.querySelectorAll('.navItems')
+const lineWidths = [0, 20, 40, 60]
 // const words = ['very','simple','scroll','snap']
 // const chnagingWordsColors=['#24DBD8','#030807','#312C23','#CBCBCB']
-// const line = document.querySelector('.line')
+const line = document.querySelector('.line')
 
 
 //set their backgrounds
@@ -52,6 +53,7 @@ addEventListener('wheel',(e)=>{
   console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
   currentIndex = targetIndex
   makeText.style.color=wordColors[currentIndex]
+  line.style.backgroundColor=wordColors[currentIndex]
   navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
   console.log('currentindex: ',currentIndex)
    startTime = performance.now()
@@ -79,6 +81,10 @@ function animateScroll(){
   // let newY = startY + (endY - startY )* progress //(progress was how far we're inside the animation)
   // scrollTo(0,newY)
   let wordOffset = fromIndex + (toIndex - fromIndex) * easedProgress
+  let lineWidthStart = lineWidths[fromIndex]
+  let lineWidthEnd = lineWidths[toIndex]
+  let lineCurrentWidth = lineWidthStart + (lineWidthEnd - lineWidthStart) * easedProgress
+  line.style.width=lineCurrentWidth + '%'
   words.forEach((word,i)=>{
     let y = (i - wordOffset) * 100
     word.style.transform=`translateY(${y}%)`
