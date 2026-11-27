@@ -227,13 +227,6 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .font-normal {
-    --tw-font-weight: var(--font-weight-normal);
-    font-weight: var(--font-weight-normal);
-  }
-  .text-\[\#24DBD8\] {
-    color: #24DBD8;
-  }
   .text-white {
     color: var(--color-white);
   }
@@ -506,11 +499,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
+@property --tw-duration {
   syntax: "*";
   inherits: false;
 }
-@property --tw-duration {
+@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
@@ -584,8 +577,8 @@
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
-      --tw-font-weight: initial;
       --tw-duration: initial;
+      --tw-font-weight: initial;
       --tw-content: "";
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;

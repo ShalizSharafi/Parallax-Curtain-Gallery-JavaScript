@@ -17,6 +17,12 @@ const h1 = document.querySelectorAll('h1')
 // const chnagingWordsColors=['#24DBD8','#030807','#312C23','#CBCBCB']
 const line = document.querySelector('.line')
 
+const photos = document.querySelectorAll('.photo')
+
+
+
+
+
 
 //set their backgrounds
 sections.forEach((sec,i)=>{
@@ -33,6 +39,8 @@ words.forEach((word, i) => {
   word.style.transform = `translateY(${(i - currentIndex) * 100}%)`
 })
 h1.forEach((val,i)=>val.style.transform=`translateY(${(i - currentIndex) * 100}%)`)
+
+photos.forEach((val)=>val.style.transform = 'scale(1.2)')
 
 addEventListener('wheel',(e)=>{
   //stop the default scroll.
@@ -113,6 +121,13 @@ function animateScroll(){
     // line.style.width= ((currentIndex) * 1/5)*100 + '%'
     sections[fromIndex].style.clipPath=`inset(${fromInset}% 0 0 0)`
   }
+
+  const dir = toIndex > fromIndex ? 1 : -1 //scrolling down 1
+  const shift = 15 //percent of section height
+
+  photos[toIndex].style.transform = `translateY(${dir * shift * (1 - easedProgress)}%) scale(1.2)`
+  photos[fromIndex].style.transform = `translateY(${-dir * shift * easedProgress}%) scale(1.2)`
+
   if(progress < 1){
     requestAnimationFrame(animateScroll)
   }else{
