@@ -63,7 +63,7 @@
        }
 
        .line{
-              @apply w-0 h-[1.2px] bg-white absolute z-100 rounded-2xl bottom-25 -translate-x-1/2 left-1/2
+              @apply w-0 h-[1.2px] bg-white absolute z-100 rounded-2xl bottom-25 -translate-x-1/2 left-1/2 before:content-[''] before:absolute before:top-0 before:right-0 before:h-full before:w-screen before:bg-white/20 before:-z-10 after:content-[''] after:absolute after:top-0 after:left-0 after:h-full after:w-screen after:bg-white/20 after:-z-10
        }
 
        #changingWord{

@@ -11,7 +11,7 @@ const makeText = document.querySelector('.make-text')
 const wordColors=['#24DBD8','#030807','#312C23','#CBCBCB']
 const navItems = document.querySelectorAll('.navItems')
 const sideText = document.querySelectorAll('.sideText')
-const lineWidths = [0, 20, 40, 60]
+const lineWidths = [...sections].map((_, i) => ((i + 1) / sections.length) * 60)
 const h1 = document.querySelectorAll('h1')
 // const words = ['very','simple','scroll','snap']
 // const chnagingWordsColors=['#24DBD8','#030807','#312C23','#CBCBCB']
@@ -22,7 +22,7 @@ const photos = document.querySelectorAll('.photo')
 
 
 
-
+line.style.width = lineWidths[0] + '%'
 
 //set their backgrounds
 sections.forEach((sec,i)=>{
