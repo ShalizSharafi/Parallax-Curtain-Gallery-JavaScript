@@ -10,7 +10,6 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
-    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --radius-2xl: 1rem;
@@ -282,6 +281,8 @@
   }
   body {
     font-family: inter;
+    touch-action: none;
+    overscroll-behavior: none;
   }
   .font-normalInter {
     font-family: normalInter;
@@ -392,10 +393,13 @@
   .wordWrapper {
     display: flex;
     height: 100%;
-    width: calc(1 / 3 * 100%);
+    width: 100%;
     align-items: center;
     justify-content: flex-start;
     gap: calc(var(--spacing) * 1.25);
+    @media (width >= 64rem) {
+      width: calc(1 / 2 * 100%);
+    }
   }
   .header-text {
     font-size: 20px;
@@ -474,6 +478,12 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    :is(& > *) {
+      height: 100%;
+    }
+    :is(& > *) {
+      width: 100%;
+    }
     :is(& > *) {
       object-fit: cover;
     }

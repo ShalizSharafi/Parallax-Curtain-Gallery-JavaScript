@@ -42,39 +42,59 @@ h1.forEach((val,i)=>val.style.transform=`translateY(${(i - currentIndex) * 100}%
 
 photos.forEach((val)=>val.style.transform = 'scale(1.2)')
 
-addEventListener('wheel',(e)=>{
-  //stop the default scroll.
-  e.preventDefault()
-  console.log('wheel fired, isAnimating:', isAnimating, 'deltaY:', e.deltaY)
-  //locking the animation
-  if(isAnimating) return 
-  console.log(e.deltaY)
 
-  let targetIndex = currentIndex
-  if( e.deltaY > 0 ){
-    targetIndex = currentIndex + 1
-  }else if(e.deltaY < 0) {
-    targetIndex = currentIndex - 1
-  }
-  //updating the current index
-  targetIndex = Math.min(Math.max(targetIndex,0),(sections.length -1)) ///range
+function goTo(index){
+   if(isAnimating) return
+  targetIndex = Math.min(Math.max(index,0),(sections.length -1)) ///range
   if(currentIndex === targetIndex) return
   fromIndex = currentIndex   // the section we're leaving 
   toIndex = targetIndex   // sections we're entering
   console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
   currentIndex = targetIndex
+  isAnimating = true
+  startTime = performance.now()
+  animateScroll()
+
+}
+
+
+
+
+
+
+addEventListener('wheel',(e)=>{
+  //stop the default scroll.
+  e.preventDefault()
+  // console.log('wheel fired, isAnimating:', isAnimating, 'deltaY:', e.deltaY)
+  //locking the animation
+  // if(isAnimating) return 
+  // console.log(e.deltaY)
+
+  // let targetIndex = currentIndex
+  if( e.deltaY > 0 ){
+    goTo(currentIndex + 1)
+  }else if(e.deltaY < 0) {
+     goTo(currentIndex - 1)
+  }
+  //updating the current index
+  // targetIndex = Math.min(Math.max(targetIndex,0),(sections.length -1)) ///range
+  // if(currentIndex === targetIndex) return
+  // fromIndex = currentIndex   // the section we're leaving 
+  // toIndex = targetIndex   // sections we're entering
+  // console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
+  // currentIndex = targetIndex
   // makeText.style.color=wordColors[currentIndex]
   // line.style.backgroundColor=wordColors[currentIndex]
   // navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
   // sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
   // h1.forEach((val)=>val.style.color=wordColors[currentIndex])
-  console.log('currentindex: ',currentIndex)
-   startTime = performance.now()
-   startY = scrollY
-   endY = currentIndex * innerHeight
-  console.log('startTime:', startTime, 'startY:', startY, 'endY:', endY)
-  isAnimating = true
-  animateScroll()
+  // console.log('currentindex: ',currentIndex)
+  //  startTime = performance.now()
+  //  startY = scrollY
+  //  endY = currentIndex * innerHeight
+  // console.log('startTime:', startTime, 'startY:', startY, 'endY:', endY)
+  // isAnimating = true
+  // animateScroll()
 
 
   // scrollTo(0, currentIndex * innerHeight)
@@ -83,7 +103,21 @@ addEventListener('wheel',(e)=>{
 
 }, {passive:false})
 
+addEventListener('keydown',(e)=>{
+  if(e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(currentIndex + 1)
+  if(e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(currentIndex - 1)
+})
 
+addEventListener('touchstart',(e)=>{
+  startY = e.touches[0].clientY
+})
+
+addEventListener('touchend',(e)=>{
+  endY = e.changedTouches[0].clientY
+  const diff = startY - endY //if the finger moves up or down is positive 
+  if(Math.abs(diff) < 50) return //ignoring tiny taps on the screen
+  goTo(diff > 0 ? currentIndex + 1 : currentIndex - 1)
+})
 
 function animateScroll(){
   let now = performance.now()
@@ -104,7 +138,7 @@ function animateScroll(){
   words.forEach((word,i)=>{
     let y = (i - wordOffset) * 100
     word.style.transform=`translateY(${y}%)`
-      console.log('word', i, word.textContent, 'y:', y.toFixed(1))
+      // console.log('word', i, word.textContent, 'y:', y.toFixed(1))
   })
   /////h1
   h1.forEach((val,i)=>{
@@ -123,7 +157,7 @@ function animateScroll(){
   }
 
   const dir = toIndex > fromIndex ? 1 : -1 //scrolling down 1
-  const shift = 15 //percent of section height
+  const shift = 8 //percent of section height
 
   photos[toIndex].style.transform = `translateY(${dir * shift * (1 - easedProgress)}%) scale(1.2)`
   photos[fromIndex].style.transform = `translateY(${-dir * shift * easedProgress}%) scale(1.2)`
