@@ -49,17 +49,17 @@ addEventListener('wheel',(e)=>{
     targetIndex = currentIndex - 1
   }
   //updating the current index
-  targetIndex = Math.min(Math.max(targetIndex,0),(sections.length -1))
+  targetIndex = Math.min(Math.max(targetIndex,0),(sections.length -1)) ///range
   if(currentIndex === targetIndex) return
   fromIndex = currentIndex   // the section we're leaving 
   toIndex = targetIndex   // sections we're entering
   console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
   currentIndex = targetIndex
-  makeText.style.color=wordColors[currentIndex]
-  line.style.backgroundColor=wordColors[currentIndex]
-  navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
-  sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
-  h1.forEach((val)=>val.style.color=wordColors[currentIndex])
+  // makeText.style.color=wordColors[currentIndex]
+  // line.style.backgroundColor=wordColors[currentIndex]
+  // navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
+  // sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
+  // h1.forEach((val)=>val.style.color=wordColors[currentIndex])
   console.log('currentindex: ',currentIndex)
    startTime = performance.now()
    startY = scrollY
@@ -84,7 +84,7 @@ function animateScroll(){
   let progress = scrolledPassed / duration //how man y seconds we're of the way through the animation
   progress = Math.min(progress,1)
   //ease progress controls the smpoothness and the gentleness of the animations passing through time
-    let easedProgress = easeInOutQuad(progress)
+  let easedProgress = easeInOutQuad(progress)
  
   let wordOffset = fromIndex + (toIndex - fromIndex) * easedProgress
   //line 

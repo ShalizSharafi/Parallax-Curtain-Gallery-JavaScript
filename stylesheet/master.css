@@ -43,7 +43,7 @@
               @apply relative h-screen overflow-hidden w-full
        }
        .sec{
-              @apply w-full h-screen fixed top-0 left-0
+              @apply w-full h-screen fixed top-0 left-0 after:absolute after:content-[''] after:inset-0 after:pointer-events-none after:bg-linear-to-b after:from-black/40 after:via-black/10 after:via-40% after:to-black/50
        }
 
        .header{
@@ -56,7 +56,7 @@
               @apply  capitalize font-medium text-[20px]
        }
        .navItems{
-              @apply px-1 capitalize text-[#24DBD8] text-[16px] flex items-center justify-center duration-900  hover:opacity-70
+              @apply px-1 capitalize text-white text-[16px] flex items-center justify-center duration-900  hover:opacity-70
        }
 
        .line{
@@ -67,11 +67,15 @@
               @apply overflow-hidden relative
        }
        .sideText{
-              @apply uppercase text-[16px] text-[#24DBD8]  absolute top-1/2 -translate-y-1/2  z-100 rotate-90 duration-900
+              @apply uppercase text-[16px] text-white  absolute top-1/2 -translate-y-1/2  z-100 rotate-90 duration-900
        }
        .row{
               @apply flex w-25 lg:w-150 fixed h-50 items-center justify-center  top-1/2 left-1/2
               -translate-y-1/2  -translate-x-1/2 z-100 overflow-hidden
+       }
+
+       .photo{
+               @apply absolute inset-0 w-full h-full *:object-cover flex items-center justify-center
        }
       
 }

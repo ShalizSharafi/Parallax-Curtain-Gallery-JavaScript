@@ -3,7 +3,7 @@
 <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Stacking Sections</title>
+       <title>Parallax Curtain Gallery</title>
        <link rel="stylesheet" href="stylesheet/out.css">
 </head>
 <body>
@@ -11,10 +11,10 @@
               <div class="wordWrapper ">
                      <span class="header-text h-10 flex w-fit items-center make-text duration-900 text-[#24DBD8]">make</span>
                      <div class="header-text *:flex *:items-center w-25 h-10 flex items-cener" id="changingWord">
-                          <span class="words absolute text-[#24DBD8] w-full h-full top-0 left-0  ">very</span>  
-                          <span class="words text-[#030807] absolute w-full h-full top-0  left-0">simple</span>  
-                          <span class="words absolute text-[#312C23] w-full h-full top-0  left-0">scroll</span>  
-                          <span class="words absolute text-[#CBCBCB] w-full h-full top-0 left-0">snap</span>  
+                          <span class="words absolute  text-white  w-full h-full top-0 left-0  ">very</span>  
+                          <span class="words absolute text-white  w-full h-full top-0  left-0">simple</span>  
+                          <span class="words absolute  text-white  w-full h-full top-0  left-0">scroll</span>  
+                          <span class="words absolute  text-white  w-full h-full top-0 left-0">snap</span>  
                      </div>
               </div>
               <nav class="hidden sm:flex w-2/3 h-full ">
@@ -36,27 +36,35 @@
        </header>
        <main class="main-wrapper ">
               <section class="sec pin" id="sec1" data-bg="#A31622">
-                     
+                   <figure class="photo">
+                     <img src="https://picsum.photos/seed/alps/1920/1080" alt="Alps"> 
+                   </figure>  
               </section>
 
               <section class="sec pin" id="sec2" data-bg="#FCF7F8">
-                    
+                    <figure class="photo">
+                     <img  src="https://picsum.photos/seed/tokyo/1920/1080" alt="Tokyo">
+                   </figure> 
               </section>
 
               <section class="sec pin" id="sec3" data-bg="#CED3DC">
-                     
+                     <figure class="photo">
+                      <img src="https://picsum.photos/seed/coast/1920/1080" alt="Coast"> 
+                   </figure> 
               </section>
 
               <section class="sec pin" id="sec4" data-bg="#343434">
-                    
+                   <figure class="photo">
+                     <img src="https://picsum.photos/seed/desert/1920/1080" alt="Desert">
+                   </figure> 
               </section> 
 
               <div class="line"></div>
-              <div class="row *:font-boldInter">
-                     <h1 class="text-[#24DBD8]">very</h1>
-                     <h1>simple</h1>
-                     <h1>scroll</h1>
-                     <h1>snap</h1>
+              <div class="row *:font-boldInter overflow-hidden">
+                     <h1>alps</h1>
+                     <h1>tokyo</h1>
+                     <h1>coast</h1>
+                     <h1>desert</h1>
               </div>
               <div class="sideText font-lightInter left-5 lg:left-10">scroll down</div>
               <div class="sideText font-lightInter right-5 lg:right-10">scroll down</div>
