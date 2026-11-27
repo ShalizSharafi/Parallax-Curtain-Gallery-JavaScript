@@ -76,6 +76,7 @@ addEventListener('wheel',(e)=>{
 }, {passive:false})
 
 
+
 function animateScroll(){
   let now = performance.now()
   let scrolledPassed = now - startTime //how long has passed since we started 
