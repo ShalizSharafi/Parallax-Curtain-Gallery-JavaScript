@@ -299,13 +299,13 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    font-size: 10vw;
+    font-size: 6vw;
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     color: var(--color-white);
     text-transform: uppercase;
     @media (width >= 64rem) {
-      font-size: 9vw;
+      font-size: 7vw;
     }
   }
 }

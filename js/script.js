@@ -7,14 +7,11 @@ let isAnimating = false
 let fromIndex = 0
 let toIndex = 0
 const words = document.querySelectorAll('.words')
-const makeText = document.querySelector('.make-text')
-const wordColors=['#24DBD8','#030807','#312C23','#CBCBCB']
+
 const navItems = document.querySelectorAll('.navItems')
-const sideText = document.querySelectorAll('.sideText')
 const lineWidths = [...sections].map((_, i) => ((i + 1) / sections.length) * 60)
 const h1 = document.querySelectorAll('h1')
-// const words = ['very','simple','scroll','snap']
-// const chnagingWordsColors=['#24DBD8','#030807','#312C23','#CBCBCB']
+
 const line = document.querySelector('.line')
 
 const photos = document.querySelectorAll('.photo')
@@ -49,7 +46,7 @@ function goTo(index){
   if(currentIndex === targetIndex) return
   fromIndex = currentIndex   // the section we're leaving 
   toIndex = targetIndex   // sections we're entering
-  console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
+  // console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
   currentIndex = targetIndex
   isAnimating = true
   startTime = performance.now()
@@ -65,40 +62,12 @@ function goTo(index){
 addEventListener('wheel',(e)=>{
   //stop the default scroll.
   e.preventDefault()
-  // console.log('wheel fired, isAnimating:', isAnimating, 'deltaY:', e.deltaY)
-  //locking the animation
-  // if(isAnimating) return 
-  // console.log(e.deltaY)
-
-  // let targetIndex = currentIndex
   if( e.deltaY > 0 ){
     goTo(currentIndex + 1)
   }else if(e.deltaY < 0) {
      goTo(currentIndex - 1)
   }
-  //updating the current index
-  // targetIndex = Math.min(Math.max(targetIndex,0),(sections.length -1)) ///range
-  // if(currentIndex === targetIndex) return
-  // fromIndex = currentIndex   // the section we're leaving 
-  // toIndex = targetIndex   // sections we're entering
-  // console.log('fromIndex:', fromIndex, 'toIndex:', toIndex)
-  // currentIndex = targetIndex
-  // makeText.style.color=wordColors[currentIndex]
-  // line.style.backgroundColor=wordColors[currentIndex]
-  // navItems.forEach((item)=>item.style.color=wordColors[currentIndex])
-  // sideText.forEach((side)=>side.style.color=wordColors[currentIndex])
-  // h1.forEach((val)=>val.style.color=wordColors[currentIndex])
-  // console.log('currentindex: ',currentIndex)
-  //  startTime = performance.now()
-  //  startY = scrollY
-  //  endY = currentIndex * innerHeight
-  // console.log('startTime:', startTime, 'startY:', startY, 'endY:', endY)
-  // isAnimating = true
-  // animateScroll()
 
-
-  // scrollTo(0, currentIndex * innerHeight)
-//we  have 4 sections, each 100 vh, so the starting position of each sec is 100,200,300,400 e.g)
 
 
 }, {passive:false})
@@ -126,7 +95,7 @@ function animateScroll(){
   let progress = scrolledPassed / duration //how man y seconds we're of the way through the animation
   progress = Math.min(progress,1)
   //ease progress controls the smpoothness and the gentleness of the animations passing through time
-  let easedProgress = easeInOutQuad(progress)
+  let easedProgress = easeInOutCubic(progress)
  
   let wordOffset = fromIndex + (toIndex - fromIndex) * easedProgress
   //line 
@@ -172,7 +141,7 @@ function animateScroll(){
 
 }
 
-function easeInOutQuad(t) {
+function easeInOutCubic(t) {
   if (t < 0.5) {
     return 4 * t * t * t
   } else {

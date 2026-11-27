@@ -37,8 +37,10 @@
        }
        
        h1{
-              @apply text-[10vw] lg:text-[9vw] text-white w-full flex items-center justify-center   h-full absolute top-0 left-0 uppercase font-bold
+              @apply text-[6vw] lg:text-[7vw] text-white w-full flex items-center justify-center   h-full absolute top-0 left-0 uppercase font-bold
        }
+
+
 }
 
 @layer components{
