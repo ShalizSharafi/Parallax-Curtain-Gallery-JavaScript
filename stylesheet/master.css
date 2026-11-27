@@ -37,10 +37,13 @@
        }
        
        h1{
-              @apply text-[6vw] lg:text-[7vw] text-white w-full flex items-center justify-center   h-full absolute top-0 left-0 uppercase font-bold
+              @apply text-[6vw] lg:text-[7vw] text-white uppercase font-bold
        }
-
-
+       
+       h4{
+              @apply font-[normalInter] capitalize text-xl lg:text-2xl 
+       }
+       
 }
 
 @layer components{
@@ -83,4 +86,7 @@
                @apply absolute inset-0 w-full h-full *:object-cover flex items-center justify-center *:w-full *:h-full
        }
       
+       .middleTextBox{
+              @apply w-full flex items-center justify-center h-full absolute top-0 left-0 uppercase font-bold flex-wrap *:w-full *:flex *:items-center *:text-center *:justify-center *:text-white content-start
+       }
 }

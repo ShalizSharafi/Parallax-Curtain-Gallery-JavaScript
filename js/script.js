@@ -10,7 +10,7 @@ const words = document.querySelectorAll('.words')
 
 const navItems = document.querySelectorAll('.navItems')
 const lineWidths = [...sections].map((_, i) => ((i + 1) / sections.length) * 60)
-const h1 = document.querySelectorAll('h1')
+const middleTextBox = document.querySelectorAll('.middleTextBox')
 
 const line = document.querySelector('.line')
 
@@ -35,7 +35,7 @@ sections.forEach((sec,i)=>{
 words.forEach((word, i) => {
   word.style.transform = `translateY(${(i - currentIndex) * 100}%)`
 })
-h1.forEach((val,i)=>val.style.transform=`translateY(${(i - currentIndex) * 100}%)`)
+middleTextBox.forEach((val,i)=>val.style.transform=`translateY(${(i - currentIndex) * 100}%)`)
 
 photos.forEach((val)=>val.style.transform = 'scale(1.2)')
 
@@ -109,8 +109,8 @@ function animateScroll(){
     word.style.transform=`translateY(${y}%)`
       // console.log('word', i, word.textContent, 'y:', y.toFixed(1))
   })
-  /////h1
-  h1.forEach((val,i)=>{
+  /////middleTextBox
+  middleTextBox.forEach((val,i)=>{
     let y = (i - wordOffset) * 100
      val.style.transform=`translateY(${y}%)`
   })
