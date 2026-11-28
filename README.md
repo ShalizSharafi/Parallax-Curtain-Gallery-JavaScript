@@ -4,7 +4,7 @@ A full-screen photo album with a scroll-driven curtain reveal and a subtle paral
 
 ![Demo](./demo.gif)
 
-**Live demo:** [your-live-link-here](https://shalizsharafi.github.io/Parallax-Curtain-Gallery-JavaScript/)
+**Live demo:** [check out the live demo](https://shalizsharafi.github.io/Parallax-Curtain-Gallery-JavaScript/)
 
 ## Features
 
